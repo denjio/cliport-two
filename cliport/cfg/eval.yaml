@@ -1,0 +1,48 @@
+# Evaluation
+
+defaults:
+  - config
+
+hydra:
+  run:
+    dir: E:\yyb\cliport-master\cliport  # ${root_dir}
+
+mode: val # val # 'val' or 'test'
+
+# eval settings
+agent: cliport
+n_demos: 10 # 100 # number of val instances
+train_demos: 50 # training demos used to train model
+n_repeats: 1 # number of repeats
+gpu: [0]
+save_results: True # write results to json
+update_results: True # False # overwrite existing json results?
+checkpoint_type: val_missing # 'last' #'val_missing' # test_best # 'val_missing'
+val_on_heldout: True
+
+disp: False # False
+shared_memory: False
+eval_task:  packing-boxes-pairs-seen-colors # packing-boxes-pairs-seen-colors # task to evaluate the model on
+model_task:  packing-boxes-pairs-seen-colorsl # multi-language-conditioned # ${eval_task} # task the model was trained on (e.g. multi-language-conditioned or packing-boxes-pairs-seen-colors)
+type: single # 'single' or 'multi'
+
+# paths
+model_dir: ${root_dir}
+exp_folder: exps # exps
+data_dir:  E:\yyb\cliport-master/data # ${root_dir}/data
+assets_root: E:\yyb\cliport-master\cliport\environments\assets/ # ${root_dir}/cliport/environments/assets/
+
+model_path: E:\yyb\cliport-master\data\packing-boxes-pairs-seen-colors-train/checkpoints/ # ${model_dir}/${exp_folder}/${model_task}-${agent}-n${train_demos}-train/checkpoints/ # path to pre-trained models
+train_config: E:\yyb\cliport-master\cliport\cfg\train.yaml # E:\yyb\cliport-master\cliport\.hydra/config.yaml # ${model_dir}/${exp_folder}/${model_task}-${agent}-n${train_demos}-train/.hydra/config.yaml # path to train config
+save_path: E:\yyb\cliport-master\save model\packing-boxes-pairs-seen-colors-val/save_checkpoints/ # ${model_dir}/${exp_folder}/${eval_task}-${agent}-n${train_demos}-train/checkpoints/ # path to save results
+results_path:  E:\yyb\cliport-master\save model\packing-boxes-pairs-seen-colors-val/results_checkpoints/ # ${model_dir}/${exp_folder}/${eval_task}-${agent}-n${train_demos}-train/checkpoints/ # path to existing results
+
+
+# record videos (super slow)
+record:
+  save_video: True
+  save_video_path:  E:\yyb\cliport-master\record data\packing-boxes-pairs-seen-colors-val/videos # ${model_dir}/${exp_folder}/${eval_task}-${agent}-n${train_demos}-train/videos/
+  add_text: True
+  fps: 20
+  video_height: 640
+  video_width: 720

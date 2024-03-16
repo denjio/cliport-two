@@ -1,0 +1,34 @@
+mode: val
+agent: cliport_net
+n_demos: 10
+train_demos: 200
+n_repeats: 1
+gpu:
+- 0
+save_results: true
+update_results: true
+checkpoint_type: last
+val_on_heldout: true
+disp: false
+shared_memory: false
+eval_task: packing-boxes-pairs-seen-colors
+model_task: packing-boxes-pairs-seen-colors
+type: single
+model_dir: ${root_dir}
+exp_folder: exps
+data_dir: E:\yyb\cliport-master/data
+assets_root: E:\yyb\cliport-master\cliport\environments\assets/
+model_path: E:\yyb\cliport-master\data\packing-boxes-pairs-seen-colors-2complete-train/checkpoints-cliport_net/
+train_config: E:\yyb\cliport-master\cliport\cfg\train1.yaml
+save_path: E:\yyb\cliport-master\save model\packing-boxes-pairs-seen-colors-2complete-val/save_checkpoints/
+results_path: E:\yyb\cliport-master\save model\packing-boxes-pairs-seen-colors-2complete-val/results_checkpoints/
+record:
+  save_video: true
+  save_video_path: E:\yyb\cliport-master\record data\packing-boxes-pairs-seen-colors-2complete-val/videos
+  add_text: true
+  fps: 20
+  video_height: 640
+  video_width: 720
+root_dir: ${env:CLIPORT_ROOT}
+tag: default
+debug: false
